@@ -1,13 +1,14 @@
 package ir.maktabsharif.dto.movie;
 
+import ir.maktabsharif.dto.Base.BaseDtoRequest;
 import lombok.*;
 
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
+
 @ToString
-public class MovieDtoRequest {
+public class MovieDtoRequest extends BaseDtoRequest<Long> {
 
     private String title;
     private String genre;

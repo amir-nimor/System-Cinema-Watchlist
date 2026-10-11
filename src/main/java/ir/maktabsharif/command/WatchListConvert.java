@@ -4,24 +4,24 @@ import ir.maktabsharif.dao.WatchlistDao;
 import ir.maktabsharif.dto.watchLst.WatchlistDtoRequest;
 import ir.maktabsharif.dto.watchLst.WatchlistDtoResponse;
 
-public class WatchListConvert {
+public class WatchListConvert implements Convertable<WatchlistDao,WatchlistDtoRequest,WatchlistDtoResponse> {
 
-    private WatchListConvert(){}
-
-
-    public static WatchlistDao watchlistDtoConvertToWatchListDao(WatchlistDtoRequest watchlistDtoRequest){
+    @Override
+    public WatchlistDao dtoRequestConvertToDao(WatchlistDtoRequest watchlistDtoRequest) {
         return WatchlistDao.builder()
                 .movieDao(watchlistDtoRequest.getMovieDao())
                 .addAt(watchlistDtoRequest.getAddAt())
                 .build();
     }
 
-
-    public static WatchlistDtoResponse watchListDaoConvertToWatchListDtoResponse(WatchlistDao watchlistDao){
-        return WatchlistDtoResponse.builder()
+    @Override
+    public WatchlistDtoResponse daoCovertToDtoResponse(WatchlistDao watchlistDao) {
+        WatchlistDtoResponse watchlistDtoResponse = WatchlistDtoResponse.builder()
                 .movieDao(watchlistDao.getMovieDao())
                 .addAt(watchlistDao.getAddAt())
-                .id(watchlistDao.getId())
                 .build();
+        watchlistDtoResponse.setId(watchlistDtoResponse.getId());
+        return watchlistDtoResponse;
+
     }
 }

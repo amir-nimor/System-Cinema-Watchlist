@@ -4,11 +4,11 @@ import ir.maktabsharif.dao.MovieDao;
 import ir.maktabsharif.dto.movie.MovieDtoRequest;
 import ir.maktabsharif.dto.movie.MovieDtoResponse;
 
-public class MovieConvert {
+public class MovieConvert implements Convertable<MovieDao,MovieDtoRequest,MovieDtoResponse> {
 
-    private MovieConvert(){}
 
-    public static MovieDao movieDtoRequestConvertToMovieDao (MovieDtoRequest movieDtoRequest){
+    @Override
+    public MovieDao dtoRequestConvertToDao(MovieDtoRequest movieDtoRequest) {
         return MovieDao.builder()
                 .title(movieDtoRequest.getTitle())
                 .genre(movieDtoRequest.getGenre())
@@ -16,13 +16,17 @@ public class MovieConvert {
                 .build();
     }
 
-
-    public static MovieDtoResponse movieDaoConvertToMovieDtoResponse(MovieDao movieDao){
-        return MovieDtoResponse.builder()
+    @Override
+    public MovieDtoResponse daoCovertToDtoResponse(MovieDao movieDao) {
+        MovieDtoResponse movieDtoResponse = MovieDtoResponse.builder()
                 .title(movieDao.getTitle())
-                .id(movieDao.getId())
                 .genre(movieDao.getGenre())
                 .duration(movieDao.getDuration())
                 .build();
+        movieDtoResponse.setId(movieDtoResponse.getId());
+        return movieDtoResponse;
+
     }
+
+
 }

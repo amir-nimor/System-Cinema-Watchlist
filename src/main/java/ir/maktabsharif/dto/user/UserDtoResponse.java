@@ -1,6 +1,7 @@
 package ir.maktabsharif.dto.user;
 
 
+import ir.maktabsharif.dto.Base.BaseDtoResponse;
 import lombok.*;
 
 @Getter
@@ -8,9 +9,8 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Builder
-public class UserDtoResponse {
+public class UserDtoResponse  extends BaseDtoResponse<Integer> {
 
-    private Integer id;
 
     private String username;
 

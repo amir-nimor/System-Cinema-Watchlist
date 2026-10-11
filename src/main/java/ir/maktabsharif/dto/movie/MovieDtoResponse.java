@@ -1,5 +1,6 @@
 package ir.maktabsharif.dto.movie;
 
+import ir.maktabsharif.dto.Base.BaseDtoResponse;
 import lombok.*;
 
 @Getter
@@ -7,10 +8,9 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @ToString
-public class MovieDtoResponse {
+public class MovieDtoResponse extends BaseDtoResponse<Long> {
 
 
-    private Long id;
     private String title;
     private String genre;
     private Integer duration;

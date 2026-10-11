@@ -8,6 +8,9 @@
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+        <class>ir.maktabsharif.dao.UserDao</class>
+        <class>ir.maktabsharif.dao.MovieDao</class>
+        <class>ir.maktabsharif.dao.WatchlistDao</class>
 
 
         <properties>

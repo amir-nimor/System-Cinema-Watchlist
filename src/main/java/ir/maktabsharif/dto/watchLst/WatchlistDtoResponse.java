@@ -1,6 +1,7 @@
 package ir.maktabsharif.dto.watchLst;
 
 import ir.maktabsharif.dao.MovieDao;
+import ir.maktabsharif.dto.Base.BaseDtoResponse;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -10,10 +11,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @ToString
-public class WatchlistDtoResponse {
+public class WatchlistDtoResponse extends BaseDtoResponse<Long> {
 
 
-    private Long id;
 
     private MovieDao movieDao;
 

@@ -1,6 +1,7 @@
 package ir.maktabsharif.dto.user;
 
 
+import ir.maktabsharif.dto.Base.BaseDtoRequest;
 import lombok.*;
 
 @Getter
@@ -8,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @ToString
-public class UserDtoRequest {
+public class UserDtoRequest extends BaseDtoRequest<Integer> {
 
     private String username;
 

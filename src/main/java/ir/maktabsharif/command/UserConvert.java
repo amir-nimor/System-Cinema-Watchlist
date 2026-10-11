@@ -4,13 +4,10 @@ import ir.maktabsharif.dao.UserDao;
 import ir.maktabsharif.dto.user.UserDtoRequest;
 import ir.maktabsharif.dto.user.UserDtoResponse;
 
-public class UserConvert {
+public class UserConvert implements Convertable<UserDao,UserDtoRequest,UserDtoResponse> {
 
-
-    private UserConvert(){}
-
-
-    public static UserDao UserDtoRequestConvertToUserDao(UserDtoRequest userDtoRequest){
+    @Override
+    public UserDao dtoRequestConvertToDao(UserDtoRequest userDtoRequest) {
         return UserDao.builder()
                 .username(userDtoRequest.getUsername())
                 .email(userDtoRequest.getEmail())
@@ -18,11 +15,14 @@ public class UserConvert {
                 .build();
     }
 
-    public static UserDtoResponse UserDaoConvertToUserDtoResponse(UserDao userDao){
-        return UserDtoResponse.builder()
-                .id(userDao.getId())
+    @Override
+    public UserDtoResponse daoCovertToDtoResponse(UserDao userDao) {
+        UserDtoResponse userDtoResponse = UserDtoResponse.builder()
                 .email(userDao.getEmail())
                 .username(userDao.getUsername())
                 .build();
+        userDtoResponse.setId(userDtoResponse.getId());
+        return userDtoResponse;
+
     }
 }
